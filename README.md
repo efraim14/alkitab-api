@@ -17,66 +17,49 @@ clone this repository, do the following command
 
 ## Usage
 
-- Write the query:
+- Write the endpoint:
 
 ```
-{
-  passages (version: tb, book: "Mazmur", chapter:23) {
-    verses {
-      verse
-      type
-      content
-    }
-  }
-}
+http://localhost:3000/bible/{translation}/{book}/{chapter}
 ```
 
-- Hit the play button
 - Result would be like this:
 
 ```
 {
-  "data": {
-    "passages": {
-      "verses": [
-        {
-          "verse": 1,
-          "type": "title",
-          "content": "TUHAN, gembalaku yang baik"
-        },
-        {
-          "verse": 1,
-          "type": "content",
-          "content": "Mazmur Daud. TUHAN adalah gembalaku, takkan kekurangan aku."
-        },
-        {
-          "verse": 2,
-          "type": "content",
-          "content": "Ia membaringkan aku di padang yang berumput hijau, Ia membimbing aku ke air yang tenang;"
-        },
-        {
-          "verse": 3,
-          "type": "content",
-          "content": "Ia menyegarkan jiwaku. Ia menuntun aku di jalan yang benar oleh karena nama-Nya."
-        },
-        {
-          "verse": 4,
-          "type": "content",
-          "content": "Sekalipun aku berjalan dalam lembah kekelaman, aku tidak takut bahaya, sebab Engkau besertaku; gada-Mu dan tongkat-Mu, itulah yang menghibur aku."
-        },
-        {
-          "verse": 5,
-          "type": "content",
-          "content": "Engkau menyediakan hidangan bagiku, di hadapan lawanku; Engkau mengurapi kepalaku dengan minyak; pialaku penuh melimpah."
-        },
-        {
-          "verse": 6,
-          "type": "content",
-          "content": "Kebajikan dan kemurahan belaka akan mengikuti aku, seumur hidupku; dan aku akan diam dalam rumah TUHAN sepanjang masa."
-        }
-      ]
-    }
-  }
+  "verses": [
+    {
+      "content": "Orang Israel ditindas di Mesir",
+      "type": "title",
+      "verse": 1,
+      "book": "Keluaran",
+      "chapter": "1",
+      "version": "tb",
+      "order": 1
+    },
+    {
+      "content": "Inilah nama para anak Israel yang datang ke Mesir bersama-sama dengan Yakub; mereka datang dengan keluarganya masing-masing:",
+      "type": "content",
+      "verse": 1,
+      "book": "Keluaran",
+      "chapter": "1",
+      "version": "tb",
+      "order": 2
+    },
+    {
+      "content": "Ruben, Simeon, Lewi dan Yehuda;",
+      "type": "content",
+      "verse": 2,
+      "book": "Keluaran",
+      "chapter": "1",
+      "version": "tb",
+      "order": 3
+    },
+    ....
+  ],
+  "book": "Keluaran",
+  "chapter": "1",
+  "version": "tb"
 }
 ```
 

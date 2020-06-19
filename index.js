@@ -1,8 +1,8 @@
 const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const cheerio = require('cheerio');
-const axios = require('axios');
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 let chapterMap = {};
 
@@ -162,34 +162,22 @@ const typeDefs = `
   }
 `;
 
-const resolvers = {
-  Query: {
-    passages: (root, args, context) => {
-      return getChapters(args.version, args.book, args.chapter, args.verse);
-    },
-  },
-};
-
-function context(headers, secrets) {
-  return {
-    headers,
-    secrets,
-  };
-}
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  introspection: true,
-  playground: true,
-});
-
 // Source: Alkitab Mobile SABDA http://alkitab.mobi/
 
 const app = express();
 
-server.applyMiddleware({ app, path: '/' });
+app.use(bodyParser.json());
+
+app.route('/:translation/:book/:chapter').get(function(req, res) {
+  getChapters(
+    req.params.translation,
+    req.params.book,
+    req.params.chapter
+    ).then((result) => {
+    res.json(result);
+  });
+});
 
 app.listen({ port }, () => {
-  console.log(`🚀 Server ready at port ${port}${server.graphqlPath}`);
+  console.log(`🚀 Server ready at port ${port}`);
 });
