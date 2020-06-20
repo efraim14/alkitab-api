@@ -1,10 +1,6 @@
 # Alkitab API
 
-[💁 New Update] GraphQL Support
-
-![alkitabgraphql](screen.png)
-
-Code & Demo: https://bible.bibleify.app
+ENDPOINT SUPPORT (via API)
 
 Bible API for Everyone. Using express with Babel ES6/ES2015, and cheerio.
 
